@@ -61,7 +61,7 @@ jobs:
       - name: Setup Git auth using GITHUB_TOKEN
         run: |
           git config --global user.name "ci-bot"
-          git config --global user.email "ci-bot@stacksimplify.com"
+          git config --global user.email "ci-bot@abc.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
       - name: Update Helm values file with new image tag
