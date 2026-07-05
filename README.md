@@ -92,6 +92,11 @@ ArgoCD's server service is `ClusterIP` only — it provisions **no** load
 balancer of its own. Access it with `kubectl -n argocd port-forward
 svc/argocd-server 8080:80` then open `http://localhost:8080`.
 
+Likewise, the web-app `Service` is `ClusterIP` — access it with
+`kubectl port-forward svc/web-app 8080:80` then open `http://localhost:8080`.
+To clean up the previously-provisioned NLB, just delete the old `Service`
+(or let ArgoCD reconcile it after re-sync) — see "Remove the NLB" below.
+
 ### Intentionally NOT included
 
 - EKS Pod Identity (no pod identity agent, no `aws_eks_pod_identity_association`)
