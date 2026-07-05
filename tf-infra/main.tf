@@ -62,13 +62,20 @@ module "ecr" {
 
 # GitHub IAM Module - OIDC role assumed by GitHub Actions to push to ECR
 module "github_iam" {
-  source              = "./modules/github-iam"
-  role_name           = var.github_oidc_role_name
-  github_org          = var.github_org
-  github_repo         = var.github_repo
-  oidc_subject_list   = ["repo:${var.github_org}/${var.github_repo}:ref:refs/heads/main"]
-  ecr_repository_arns = [for name in var.ecr_repository_names : "arn:aws:ecr:${var.region}:${data.aws_caller_identity.current.account_id}:repository/${name}/*"]
-  tags                = var.tags
+  source            = "./modules/github-iam"
+  role_name         = var.github_oidc_role_name
+  github_org        = var.github_org
+  github_repo       = var.github_repo
+  oidc_subject_list = ["repo:${var.github_org}/${var.github_repo}:ref:refs/heads/main"]
+  # Grant on both the repository ARN (for repo-level actions like
+  # ecr:InitiateLayerUpload) and the image ARN (/* suffix) so ECR push works.
+  ecr_repository_arns = flatten([
+    for name in var.ecr_repository_names : [
+      "arn:aws:ecr:${var.region}:${data.aws_caller_identity.current.account_id}:repository/${name}",
+      "arn:aws:ecr:${var.region}:${data.aws_caller_identity.current.account_id}:repository/${name}/*",
+    ]
+  ])
+  tags = var.tags
 }
 
 data "aws_caller_identity" "current" {}
