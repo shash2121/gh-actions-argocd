@@ -16,7 +16,7 @@ node_group_max_size       = 3
 # ArgoCD Variables
 deploy_argocd              = true
 argocd_chart_version       = "7.3.11"
-argocd_server_service_type = "LoadBalancer"
+argocd_server_service_type = "ClusterIP"
 
 # ECR Variables - repo pushed to by the GitHub Actions workflow
 ecr_repository_names = ["web-app"]

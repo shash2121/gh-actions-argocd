@@ -89,7 +89,7 @@ variable "argocd_chart_version" {
 }
 
 variable "argocd_server_service_type" {
-  description = "Service type for ArgoCD server (LoadBalancer, ClusterIP, NodePort)"
+  description = "Service type for ArgoCD server (ClusterIP, NodePort) — NOT LoadBalancer so ArgoCD provisions no LB of its own"
   type        = string
   default     = "ClusterIP"
 }

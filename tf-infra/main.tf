@@ -30,8 +30,7 @@ module "vpc" {
 }
 
 # EKS Module - cluster, node group, and ArgoCD.
-# NOTE: This stack intentionally provisions no EKS Pod Identity, RDS, SQS or
-# Secrets Manager resources. ArgoCD is installed by Terraform via the Helm
+# NOTE: ArgoCD is installed by Terraform via the Helm
 # provider and exposed through a LoadBalancer service (NLB) provisioned by the
 # in-tree AWS cloud provider.
 module "eks" {

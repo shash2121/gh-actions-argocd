@@ -3,8 +3,9 @@
 # This avoids Terraform namespace finalizer issues on destroy.
 #
 # ArgoCD is provisioned inside the EKS cluster by Terraform. The server is
-# exposed via a LoadBalancer service (NLB provisioned by the in-tree AWS cloud
-# provider) so it is reachable without the AWS Load Balancer Controller.
+# exposed only via a ClusterIP service (no LoadBalancer / NLB is created) so
+# it never provisions a load balancer of its own. Use `kubectl port-forward`
+# to access it (`kubectl -n argocd port-forward svc/argocd-server 8080:80`).
 
 resource "helm_release" "argocd" {
   count = var.deploy_argocd ? 1 : 0

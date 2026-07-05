@@ -88,9 +88,9 @@ gh-actions-argocd/
 | ECR repository `web-app` | `tf-infra/modules/ecr` |
 | GitHub Actions OIDC IAM role | `tf-infra/modules/github-iam` |
 
-ArgoCD's server service is exposed as a `LoadBalancer` (an NLB provisioned
-by the EKS in-tree cloud provider), so it is reachable without an extra
-ingress controller or the AWS Load Balancer Controller.
+ArgoCD's server service is `ClusterIP` only — it provisions **no** load
+balancer of its own. Access it with `kubectl -n argocd port-forward
+svc/argocd-server 8080:80` then open `http://localhost:8080`.
 
 ### Intentionally NOT included
 
@@ -123,7 +123,8 @@ the ArgoCD admin password and the LoadBalancer hostname:
 aws eks update-kubeconfig --name dev-eks-cluster --region us-east-1
 kubectl -n argocd get secret argocd-initial-admin-secret \
   -o jsonpath="{.data.password}" | base64 -d ; echo
-kubectl -n argocd get svc argocd-server -o wide
+kubectl -n argocd port-forward svc/argocd-server 8080:80
+# then open http://localhost:8080
 ```
 
 ## Bootstrap the GitOps app
