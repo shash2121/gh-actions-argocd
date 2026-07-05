@@ -122,7 +122,7 @@ terraform apply
 ```
 
 Once `terraform apply` completes, ArgoCD is running on the EKS cluster. Get
-the ArgoCD admin password and the LoadBalancer hostname:
+the ArgoCD admin password (everything is reached via port-forward):
 
 ```bash
 aws eks update-kubeconfig --name dev-eks-cluster --region us-east-1
