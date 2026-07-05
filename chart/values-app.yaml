@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: 311902596413.dkr.ecr.us-east-1.amazonaws.com/web-app
-  tag: sha-3ed714b
+  tag: sha-7e3bc2e
   pullPolicy: Always
 
 service:
