@@ -34,7 +34,7 @@ and ArgoCD itself.
                                               ▼
                                       ┌──────────────────┐
                                       │ EKS pods (nginx) │
-                                      │  + NLB Service   │
+                                      │ + ClusterIP svc  │
                                       └──────────────────┘
 ```
 
@@ -54,7 +54,7 @@ gh-actions-argocd/
 │   ├── values-app.yaml       # CI updates `image.tag` here on each push
 │   └── templates/
 │       ├── deployment.yaml
-│       └── service.yaml      # type: LoadBalancer (NLB)
+│   └── service.yaml      # type: ClusterIP (access via port-forward)
 ├── argocd/
 │   └── 01-applications.yaml  # ArgoCD Application (syncs chart/)
 ├── kustomization.yaml        # `kubectl apply -k .` bootstraps ArgoCD app
