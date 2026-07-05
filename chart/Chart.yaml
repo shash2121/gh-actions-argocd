@@ -1,0 +1,6 @@
+apiVersion: v2
+name: web-app
+description: Nexus static web app served via nginx
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

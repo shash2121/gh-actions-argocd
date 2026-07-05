@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus — Cloud DevOps, Simplified</title>
+  <meta name="description" content="Nexus delivers GitOps-driven cloud delivery on AWS EKS with GitHub Actions and ArgoCD." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Animated gradient background -->
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+  <div class="bg-blob blob-3"></div>
+
+  <!-- Navbar -->
+  <nav class="nav">
+    <a href="#" class="brand">
+      <span class="brand-mark">◆</span> Nexus
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#stats">Impact</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <a href="#cta" class="btn btn-ghost">Get started</a>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="badge">
+      <span class="pulse"></span> GitOps on AWS EKS · Live now
+    </div>
+    <h1 class="hero-title">
+      Ship faster with <span class="grad">GitOps-driven</span> cloud delivery
+    </h1>
+    <p class="hero-sub">
+      Nexus orchestrates your containers across Amazon EKS using GitHub Actions
+      for CI and ArgoCD for continuous delivery — declarative, auditable, and
+      fully automated from <code>git push</code> to production.
+    </p>
+    <div class="hero-cta">
+      <a href="#cta" class="btn btn-primary">Launch a pipeline →</a>
+      <a href="#stack" class="btn btn-ghost">View the stack</a>
+    </div>
+
+    <!-- Terminal mockup -->
+    <div class="terminal">
+      <div class="term-bar">
+        <span class="dot red"></span>
+        <span class="dot amber"></span>
+        <span class="dot green"></span>
+        <span class="term-title">nexus — zsh</span>
+      </div>
+      <pre class="term-body"><span class="prompt">$</span> git push origin main
+<span class="ok">✓</span> GitHub Actions build → ECR
+<span class="ok">✓</span> ArgoCD auto-sync → EKS
+<span class="info">→</span> deployed in <span class="hl">38s</span> 🚀</pre>
+    </div>
+  </header>
+
+  <!-- Logos / trust strip -->
+  <section class="trust">
+    <p class='trust-label'>Powering teams that ship at cloud scale</p>
+    <div class="logos">
+      <span class='logo'>aws</span>
+      <span class='logo'>eks</span>
+      <span class='logo'>argo<span class='logo-dim'>cd</span></span>
+      <span class='logo'>github<span class='logo-dim'>actions</span></span>
+      <span class='logo'>terraform</span>
+      <span class='logo'>helm</span>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="section">
+    <div class="section-head">
+      <span class="eyebrow">Why Nexus</span>
+      <h2>Everything you need to deliver, nothing you don't</h2>
+      <p class="section-sub">A focused toolchain built for teams that value velocity and reliability in equal measure.</p>
+    </div>
+    <div class="grid features-grid">
+      <article class="card">
+        <div class="card-icon">🔁</div>
+        <h3>Continuous Delivery</h3>
+        <p>ArgoCD watches your Git repo and reconciles cluster state automatically. Self-healing keeps drift in check.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">🛡️</div>
+        <h3>Secure by Default</h3>
+        <p>Short-lived OIDC credentials from GitHub Actions push to ECR — no long-lived keys, no secrets sprawl.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">📦</div>
+        <h3>Reproducible Infra</h3>
+        <p>Every cluster, VPC and repository is expressed as Terraform. One <code>apply</code> stands up the stack.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">🚀</div>
+        <h3>Fast Deploys</h3>
+        <p>From commit to production in under a minute. Rolling updates with health checks and automatic rollback.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">📜</div>
+        <h3>Audit Everything</h3>
+        <p>Every change is a pull request. Your Git history <em>is</em> your deployment log — reviewable and reversible.</p>
+      </article>
+      <article class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Observable</h3>
+        <p>Native metrics, structured logs and live sync status from ArgoCD give you confidence at scale.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section id="stack" class="section section-alt">
+    <div class="section-head">
+      <span class="eyebrow">The Stack</span>
+      <h2>From commit to cluster, in four moves</h2>
+    </div>
+    <div class="pipeline">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Push</h3>
+        <p>A developer pushes a change to the <code>main</code> branch on GitHub.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Build</h3>
+        <p>GitHub Actions builds the Docker image and pushes it to AWS ECR via OIDC.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Sync</h3>
+        <p>ArgoCD detects the new image tag in Git and syncs the Helm release on EKS.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Live</h3>
+        <p>Pods roll out behind a LoadBalancer. Health checks gate the switch to active traffic.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section id="stats" class="section stats-section">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num" data-target="38">0</div>
+        <div class="stat-label">seconds to deploy</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-target="100">0</div>
+        <div class="stat-label">% GitOps coverage</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-target="0">0</div>
+        <div class="stat-label">long-lived secrets</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-target="3">0</div>
+        <div class="stat-label">AZs, highly available</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="section">
+    <div class="section-head">
+      <span class="eyebrow">Pricing</span>
+      <h2>Simple plans that scale with you</h2>
+      <p class="section-sub">No surprises. Bring your own AWS account and pay only for what runs.</p>
+    </div>
+    <div class="grid pricing-grid">
+      <article class="plan">
+        <h3>Starter</h3>
+        <div class="price"><span class="cur">$</span>0<span class="per">/mo</span></div>
+        <p class="plan-sub">For side projects &amp; learning.</p>
+        <ul class="plan-feats">
+          <li>1 EKS cluster</li>
+          <li>Up to 3 services</li>
+          <li>Community support</li>
+        </ul>
+        <a href="#cta" class="btn btn-ghost btn-block">Begin</a>
+      </article>
+      <article class="plan plan-featured">
+        <div class="ribbon">Most popular</div>
+        <h3>Team</h3>
+        <div class="price"><span class="cur">$</span>49<span class="per">/mo</span></div>
+        <p class="plan-sub">For growing engineering teams.</p>
+        <ul class="plan-feats">
+          <li>Unlimited services</li>
+          <li>Multi-environment GitOps</li>
+          <li>Slack support</li>
+          <li>Automatic rollback</li>
+        </ul>
+        <a href="#cta" class="btn btn-primary btn-block">Start free trial</a>
+      </article>
+      <article class="plan">
+        <h3>Enterprise</h3>
+        <div class="price">Custom</div>
+        <p class="plan-sub">For platform teams at scale.</p>
+        <ul class="plan-feats">
+          <li>SAML SSO &amp; RBAC</li>
+          <li>Audit &amp; compliance packs</li>
+          <li>Dedicated support</li>
+        </ul>
+        <a href="#cta" class="btn btn-ghost btn-block">Talk to us</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="cta">
+    <h2>Ready to ship like the best?</h2>
+    <p>Stand up a full GitOps pipeline on AWS EKS in minutes — not sprints.</p>
+    <form id='signup' class='cta-form'>
+      <input type='email' placeholder='you@company.com' required />
+      <button class='btn btn-primary' type='submit'>Request access</button>
+    </form>
+    <p id='cta-note' class='cta-note' hidden>Thanks — we'll be in touch soon. 🎉</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="foot-cols">
+      <div class="foot-col">
+        <a href="#" class="brand brand-foot"><span class="brand-mark">◆</span> Nexus</a>
+        <p class="foot-sub">GitOps-first cloud delivery for teams that ship.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#stack">Pipeline</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div class="foot-col">
+        <h4>Resources</h4>
+        <a href="#">Docs</a>
+        <a href="#">Architecture</a>
+        <a href="#">Status</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Nexus Labs. Built with GitHub Actions + ArgoCD.</span>
+      <span class="foot-meta">
+        <span class="status-dot"></span> All systems operational
+      </span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

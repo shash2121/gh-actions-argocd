@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  # ArgoCD Application that syncs the web-app Helm chart from this repo.
+  # Apply once to bootstrap GitOps:
+  #   kubectl apply -k .
+  - argocd/01-applications.yaml
+
+  # The web-app Helm chart is rendered + synced by ArgoCD automatically.
+  # To deploy manually without ArgoCD:
+  #   helm template web-app chart -f chart/values-app.yaml | kubectl apply -f -

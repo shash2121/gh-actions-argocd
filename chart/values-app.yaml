@@ -1,0 +1,18 @@
+replicaCount: 2
+
+image:
+  repository: 311902596413.dkr.ecr.us-east-1.amazonaws.com/web-app
+  tag: sha-0000000
+  pullPolicy: Always
+
+service:
+  type: LoadBalancer
+  port: 80
+
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "50m"
+  limits:
+    memory: "128Mi"
+    cpu: "200m"
